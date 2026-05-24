@@ -84,7 +84,7 @@ export const login = async (req,res) => {
             following:user.following,
             posts:populatePost
         }
-        return res.cookie('token', token, {httpOnly:true, sameSite:'strict', maxAge: 1*24*60*60*1000}).json({ // 1 day*24 hrs*60 mins*60 sec*1000 ms
+        return res.cookie('token', token, {httpOnly:true, sameSite:'none', secure:true, maxAge: 1*24*60*60*1000}).json({ // 1 day*24 hrs*60 mins*60 sec*1000 ms
             message:`Welcome back ${user.username}`,
             success:true,
             user
@@ -97,7 +97,7 @@ export const login = async (req,res) => {
 
 export const logout = async (_,res) => {
     try{
-        return res.cookie("token", "", {maxAge:0}).json({ //Empty the user token
+        return res.cookie("token", "", {maxAge:0, sameSite:'none', secure:true}).json({ //Empty the user token
             message:"Logged out successfully",
             success:true
         });
