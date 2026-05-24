@@ -61,7 +61,7 @@ export const useOfflineQueue = () => {
                     formData.append('image', blob, 'offline_upload.jpg');
                 }
 
-                await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/addpost`, formData, {
+                await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/addpost`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                     withCredentials: true
                 });

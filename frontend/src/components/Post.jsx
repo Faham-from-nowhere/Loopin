@@ -36,7 +36,7 @@ const Post = ({post}) => {
     const LikeOrDislikeHandler = async() => {
         try {
             const action = liked ? 'dislike' : 'like';
-            const res = await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/${action}`, {}, { withCredentials:true });
+            const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/${action}`, {}, { withCredentials:true });
             if(res.data.success){
                 const updatedLikes = liked ? postLike - 1 : postLike + 1;
                 setPostLike(updatedLikes);
@@ -57,7 +57,7 @@ const Post = ({post}) => {
 
     const commentHandler = async () => {
         try {
-           const res = await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/comment`, {text}, {
+           const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/comment`, {text}, {
             headers: {
                 'Content-Type':'application/json'
             } , withCredentials:true}); 
@@ -78,7 +78,7 @@ const Post = ({post}) => {
 
     const deletePostHandler = async () => {
         try {
-            const res = await axios.delete(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/delete`, {withCredentials:true});
+            const res = await axios.delete(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/delete`, {withCredentials:true});
             if(res.data.success){
                 const updatedPostData = posts.filter((postItem) => postItem._id !== post?._id);
                 dispatch(setPosts(updatedPostData));
@@ -92,7 +92,7 @@ const Post = ({post}) => {
 
     const archivePostHandler = async () => {
         try {
-            const res = await axios.put(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/archive`, {}, {withCredentials:true});
+            const res = await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/archive`, {}, {withCredentials:true});
             if(res.data.success){
                 // We should remove the post from the current view by updating Redux
                 // If the user is on their profile "Archive" tab, they need to refresh, or we handle it via Redux state
@@ -109,7 +109,7 @@ const Post = ({post}) => {
 
     const bookmarkHandler = async () => {
         try {
-            const res = await axios.get(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/bookmark`, {withCredentials:true});
+            const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/${post._id}/bookmark`, {withCredentials:true});
             if(res.data.success){
                 toast.success(res.data.message);
             }

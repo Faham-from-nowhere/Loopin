@@ -17,7 +17,7 @@ export const useMentionSearch = (text) => {
                 // Fetch users
                 const fetchUsers = async () => {
                     try {
-                        const res = await axios.get(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/search?query=${query}`, { withCredentials: true });
+                        const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/search?query=${query}`, { withCredentials: true });
                         if (res.data.success) {
                             setSuggestedUsers(res.data.users);
                         }

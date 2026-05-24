@@ -54,7 +54,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
     if(user){
-      const socketio = io(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`, {
+      const socketio = io(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}`, {
         query:{
           userId:user?._id
         },

@@ -20,7 +20,7 @@ const SearchDialog = ({ open, setOpen }) => {
 
         setLoading(true);
         try {
-            const res = await axios.get(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/search?query=${value}`, {withCredentials: true});
+            const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/search?query=${value}`, {withCredentials: true});
             if(res.data.success){
                 setResults(res.data.users);
             }

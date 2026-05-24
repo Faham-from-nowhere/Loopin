@@ -33,7 +33,7 @@ const LeftSidebar = () => {
         if (isOpen) {
             setUnreadCount(0);
             try {
-                await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/notification/mark-all-read`, {}, {withCredentials:true});
+                await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/notification/mark-all-read`, {}, {withCredentials:true});
                 dispatch(setLikeNotification(likeNotification.map(n => ({...n, isRead: true}))));
             } catch (error) {
                 console.log(error);
@@ -43,7 +43,7 @@ const LeftSidebar = () => {
 
     const logoutHandler = async () => {
         try {
-            const res = await axios.get(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/logout`, {withCredentials:true});
+            const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/logout`, {withCredentials:true});
             if(res.data.success){
                 dispatch(setAuthUser(null));
                 dispatch(setSelectedPost(null));
@@ -80,7 +80,7 @@ const LeftSidebar = () => {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const res = await axios.get(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/notification`, { withCredentials: true });
+                const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/notification`, { withCredentials: true });
                 if (res.data.success) {
                     // Prepend to rtmSlice, avoiding duplicates
                     res.data.notifications.forEach(n => dispatch(setLikeNotification(n)));
@@ -96,7 +96,7 @@ const LeftSidebar = () => {
 
     const handleFollowRequest = async (id, action) => {
         try {
-            const res = await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/follow-request/${id}/${action}`, {}, { withCredentials: true });
+            const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/follow-request/${id}/${action}`, {}, { withCredentials: true });
             if (res.data.success) {
                 toast.success(res.data.message);
                 // The backend will send a notification if accepted, which socket will catch

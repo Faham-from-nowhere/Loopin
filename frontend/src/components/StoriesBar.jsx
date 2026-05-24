@@ -14,7 +14,7 @@ const StoriesBar = () => {
 
     const fetchStories = async () => {
         try {
-            const res = await axios.get(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/story`, { withCredentials: true });
+            const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/story`, { withCredentials: true });
             if(res.data.success){
                 const fetchedStories = res.data.stories;
                 setStories(fetchedStories);
@@ -42,7 +42,7 @@ const StoriesBar = () => {
         const formData = new FormData();
         formData.append('image', file);
         try {
-            const res = await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/story`, formData, {
+            const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/story`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 withCredentials: true
             });
@@ -59,7 +59,7 @@ const StoriesBar = () => {
         setViewingStory(story);
         if(!story.views.includes(user?._id)){
             try {
-                await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/story/${story._id}/view`, {}, { withCredentials: true });
+                await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/story/${story._id}/view`, {}, { withCredentials: true });
                 // Optimistically update views
                 story.views.push(user?._id);
                 setStories([...stories]);
