@@ -21,7 +21,7 @@ const ChatPage = () => {
         const fetchMessages = async () => {
             try {
                 if(selectedUser?._id) {
-                    const res = await axios.get(`http://localhost:8000/api/v1/message/all/${selectedUser?._id}`, {
+                    const res = await axios.get(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/message/all/${selectedUser?._id}`, {
                         withCredentials: true
                     });
                     if(res.data.success) {
@@ -41,7 +41,7 @@ const ChatPage = () => {
                 toast.error("Message cannot be empty");
                 return;
             }
-            const res = await axios.post(`http://localhost:8000/api/v1/message/send/${selectedUser?._id}`, 
+            const res = await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/message/send/${selectedUser?._id}`, 
                 { textMessage },
                 {
                     headers: {

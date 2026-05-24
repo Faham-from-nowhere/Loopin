@@ -11,7 +11,7 @@ const useGetNotifications = () => {
         const fetchNotifications = async () => {
             if (!user) return;
             try {
-                const res = await axios.get('http://localhost:8000/api/v1/notification', { withCredentials: true });
+                const res = await axios.get(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/notification`, { withCredentials: true });
                 if (res.data.success) {
                     dispatch(setLikeNotification(res.data.notifications));
                 }

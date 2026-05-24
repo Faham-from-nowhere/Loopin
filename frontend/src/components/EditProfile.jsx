@@ -25,7 +25,7 @@ const EditProfile = () => { // Need to implement story in here
 
     const togglePrivacyHandler = async () => {
         try {
-            const res = await axios.post('http://localhost:8000/api/v1/user/toggle-privacy', {}, { withCredentials: true });
+            const res = await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/toggle-privacy`, {}, { withCredentials: true });
             if (res.data.success) {
                 setInput({ ...input, isPrivate: res.data.isPrivate });
                 const updatedUserData = { ...user, isPrivate: res.data.isPrivate };
@@ -57,7 +57,7 @@ const EditProfile = () => { // Need to implement story in here
             formData.append("profilePhoto", input.profilePhoto);
         }
         try {
-            const res = await axios.post('http://localhost:8000/api/v1/user/profile/edit', formData, {
+            const res = await axios.post(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/user/profile/edit`, formData, {
                 headers:{
                     'Content-Type':'multipart/form-data'
                 },

@@ -22,7 +22,7 @@ const Comment = ({ comment }) => {
 
     const handleDelete = async () => {
         try {
-            const res = await axios.delete(`http://localhost:8000/api/v1/post/comment/${comment._id}`, { withCredentials: true });
+            const res = await axios.delete(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/comment/${comment._id}`, { withCredentials: true });
             if (res.data.success) {
                 if (postId) {
                     const updatedPosts = posts.map(p => {
@@ -46,7 +46,7 @@ const Comment = ({ comment }) => {
     const handleEdit = async () => {
         if (!editText.trim()) return;
         try {
-            const res = await axios.put(`http://localhost:8000/api/v1/post/comment/${comment._id}`, { text: editText }, { withCredentials: true });
+            const res = await axios.put(`\${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/v1/post/comment/${comment._id}`, { text: editText }, { withCredentials: true });
             if (res.data.success) {
                 if (postId) {
                     const updatedPosts = posts.map(p => {
