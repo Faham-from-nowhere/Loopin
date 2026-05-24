@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="blob:https://gemini.google.com/19ba3d63-e2bf-4f25-b26d-fba1c85434de" alt="Loopin Logo" width="100"/>
+  <img src="./logo.jpg" alt="Loopin Logo" width="200"/>
   <h1>Loopin 📸</h1>
   <p>A full-stack, feature-rich social media application inspired by Instagram.</p>
 
