@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://img.icons8.com/fluent/100/000000/instagram-new.png" alt="Loopin Logo" width="100"/>
+  <img src="blob:https://gemini.google.com/19ba3d63-e2bf-4f25-b26d-fba1c85434de" alt="Loopin Logo" width="100"/>
   <h1>Loopin 📸</h1>
   <p>A full-stack, feature-rich social media application inspired by Instagram.</p>
 
